@@ -20,10 +20,18 @@ gem 'puma', '~> 3.0'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'awesome_print'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'simplecov'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'pry'
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end
 
 group :development do
