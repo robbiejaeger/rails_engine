@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    namespace :v1 do
+    namespace :v1, defaults: {format: :json} do
 
       namespace :invoice_items do
         get 'find', to: 'find#show'
@@ -10,6 +10,12 @@ Rails.application.routes.draw do
       end
 
       namespace :invoices do
+        get 'find', to: 'find#show'
+        get 'find_all', to: 'find#index'
+        get 'random', to: 'random#show'
+      end
+
+      namespace :items do
         get 'find', to: 'find#show'
         get 'find_all', to: 'find#index'
         get 'random', to: 'random#show'
@@ -33,12 +39,12 @@ Rails.application.routes.draw do
         get 'random', to: 'random#show'
       end
 
-      resources :merchants, except: [:new, :edit], defaults: {format: :json}
-      resources :transactions, except: [:new, :edit], defaults: {format: :json}
-      resources :customers, except: [:new, :edit], defaults: {format: :json}
-      resources :invoices, except: [:new, :update], defaults: {format: :json}
-      resources :invoice_items, except: [:new, :update], defaults: {format: :json}
-      resources :items, except: [:new, :update], defaults: {format: :json}
+      resources :merchants, only: [:index, :show]
+      resources :transactions, only: [:index, :show]
+      resources :customers, only: [:index, :show]
+      resources :invoices, only: [:index, :show]
+      resources :invoice_items, only: [:index, :show]
+      resources :items, only: [:index, :show]
     end
   end
 end

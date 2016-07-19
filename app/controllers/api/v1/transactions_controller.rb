@@ -1,11 +1,10 @@
 class Api::V1::TransactionsController < ApplicationController
-  respond_to :json, :xml
 
   def index
-    respond_with Transaction.all
+    render json: Transaction.all
   end
 
   def show
-    respond_with Transaction.find(params[:id])
+    render json: Transaction.find(params[:id])
   end
 end

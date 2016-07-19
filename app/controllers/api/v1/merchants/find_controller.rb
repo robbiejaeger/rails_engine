@@ -1,12 +1,11 @@
 class Api::V1::Merchants::FindController < ApplicationController
-  respond_to :json, :xml
 
   def show
-    respond_with Merchant.find_by(merchant_params)
+    render json: Merchant.find_by(merchant_params)
   end
 
   def index
-    respond_with Merchant.where(merchant_params)
+    render json: Merchant.where(merchant_params)
   end
 
   private

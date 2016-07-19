@@ -1,11 +1,10 @@
 class Api::V1::CustomersController < ApplicationController
-  respond_to :json, :xml
 
   def index
-    respond_with Customer.all
+    render json: Customer.all
   end
 
   def show
-    respond_with Customer.find(params[:id])
+    render json: Customer.find(params[:id])
   end
 end
