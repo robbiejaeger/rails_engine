@@ -1,23 +1,44 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    namespace :v1 do
 
-
-    namespace :api do
-      namespace :v1 do
-        namespace :invoice_items do
-          get 'find', to: 'find#show'
-          get 'find_all', to: 'find#index'
-          get 'random', to: 'random#show'
-        end
-        namespace :invoices do
-          get 'find', to: 'find#show'
-          get 'find_all', to: 'find#index'
-          get 'random', to: 'random#show'
-        end
-        resources :merchants, except: [:new, :edit], defaults: {format: :json}
-        resources :invoices, except: [:new, :update], defaults: {format: :json}
-        resources :invoice_items, except: [:new, :update], defaults: {format: :json}
-        resources :items, except: [:new, :update], defaults: {format: :json}
+      namespace :invoice_items do
+        get 'find', to: 'find#show'
+        get 'find_all', to: 'find#index'
+        get 'random', to: 'random#show'
       end
+
+      namespace :invoices do
+        get 'find', to: 'find#show'
+        get 'find_all', to: 'find#index'
+        get 'random', to: 'random#show'
+      end
+
+      namespace :customers do
+        get 'find', to: 'find#show'
+        get 'find_all', to: 'find#index'
+        get 'random', to: 'random#show'
+      end
+
+      namespace :merchants do
+        get 'find', to: 'find#show'
+        get 'find_all', to: 'find#index'
+        get 'random', to: 'random#show'
+      end
+
+      namespace :transactions do
+        get 'find', to: 'find#show'
+        get 'find_all', to: 'find#index'
+        get 'random', to: 'random#show'
+      end
+
+      resources :merchants, except: [:new, :edit], defaults: {format: :json}
+      resources :transactions, except: [:new, :edit], defaults: {format: :json}
+      resources :customers, except: [:new, :edit], defaults: {format: :json}
+      resources :invoices, except: [:new, :update], defaults: {format: :json}
+      resources :invoice_items, except: [:new, :update], defaults: {format: :json}
+      resources :items, except: [:new, :update], defaults: {format: :json}
     end
   end
+end
