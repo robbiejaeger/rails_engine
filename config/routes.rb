@@ -14,11 +14,6 @@ Rails.application.routes.draw do
           get 'find_all', to: 'find#index'
           get 'random', to: 'random#show'
         end
-
-          get 'find', to: 'find#show'
-          get 'find_all', to: 'find#index'
-          get 'random', to: 'random#show'
-        end
         resources :merchants, except: [:new, :edit], defaults: {format: :json}
         resources :invoices, except: [:new, :update], defaults: {format: :json}
         resources :items, except: [:new, :update], defaults: {format: :json}
