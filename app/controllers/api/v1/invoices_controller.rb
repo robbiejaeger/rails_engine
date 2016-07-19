@@ -1,11 +1,10 @@
 class Api::V1::InvoicesController < ApplicationController
-  respond_to :json, :xml
 
   def index
-    respond_with(Invoice.all)
+    render json: Invoice.all
   end
 
   def show
-    respond_with Invoice.find(params[:id])
+    render json: Invoice.find(params[:id])
   end
 end
