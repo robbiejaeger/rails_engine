@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         end
         resources :merchants, except: [:new, :edit], defaults: {format: :json}
         resources :invoices, except: [:new, :update], defaults: {format: :json}
+        resources :items, except: [:new, :update], defaults: {format: :json}
       end
     end
   end
