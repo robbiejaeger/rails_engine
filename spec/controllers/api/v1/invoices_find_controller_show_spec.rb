@@ -64,7 +64,5 @@ describe Api::V1::Invoices::FindController, type: :controller do
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
     end
-
-
   end
 end
