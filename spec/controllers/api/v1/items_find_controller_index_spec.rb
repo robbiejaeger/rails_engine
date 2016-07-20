@@ -62,7 +62,7 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       items = create_list(:item, 3)
       items = items + create_list(:item, 3, unit_price: 1475)
 
-      get :index, params: {unit_price: 1475, format: :json}
+      get :index, params: {unit_price: 14.75, format: :json}
       result_array = JSON.parse(response.body)
       expect(3).to eq(result_array.length)
 

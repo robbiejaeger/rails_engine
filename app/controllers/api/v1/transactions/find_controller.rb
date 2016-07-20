@@ -1,11 +1,11 @@
 class Api::V1::Transactions::FindController < ApplicationController
 
   def index
-    @transactions = Transaction.where(transaction_params)
+    @transactions = Transaction.custom_where(transaction_params)
   end
 
   def show
-    @transaction = Transaction.find_by(transaction_params)
+    @transaction = Transaction.custom_find_by(transaction_params)
   end
 
   private

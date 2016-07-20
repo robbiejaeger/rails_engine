@@ -53,7 +53,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
       invoice_items = create_list(:invoice_item, 2)
       uniq_price_invoice_item = create(:invoice_item, unit_price: 1050)
 
-      get :show, params: {unit_price: 1050, format: :json}
+      get :show, params: {unit_price: 10.50, format: :json}
       result = JSON.parse(response.body)
 
       expect(result["id"]).to eq(uniq_price_invoice_item.id)
@@ -68,7 +68,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
     it 'returns the first of several invoice_items with the same price' do
       invoice_items = create_list(:invoice_item, 3)
 
-      get :show, params: {unit_price: invoice_items[0].unit_price, format: :json}
+      get :show, params: {unit_price: 150.50, format: :json}
       result = JSON.parse(response.body)
 
       expect(result["id"]).to eq(invoice_items[0].id)
