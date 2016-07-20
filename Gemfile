@@ -22,9 +22,11 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'awesome_print'
 gem 'responders'
+gem 'rails-controller-testing'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'factory_girl_rails'
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'simplecov'
