@@ -39,7 +39,11 @@ Rails.application.routes.draw do
         get 'random', to: 'random#show'
       end
 
-      resources :merchants, only: [:index, :show]
+      resources :merchants, only: [:index, :show] do
+        get 'items', to: 'merchants/items#index'
+        # get 'invoices', to: 'merchants/invoices#index'
+      end
+
       resources :transactions, only: [:index, :show]
       resources :customers, only: [:index, :show]
 
@@ -60,6 +64,8 @@ Rails.application.routes.draw do
         get 'invoice_items', to: 'items/invoice_items#index'
         get 'merchant', to: 'items/merchants#show'
       end
+
+
     end
   end
 end
