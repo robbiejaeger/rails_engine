@@ -66,8 +66,6 @@ Rails.application.routes.draw do
         get 'invoice_items', to: 'items/invoice_items#index'
         get 'merchant', to: 'items/merchants#show'
       end
-
-
     end
   end
 end
