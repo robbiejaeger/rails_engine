@@ -84,7 +84,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
       merchant = create(:merchant)
       invoice_items = invoice_items + create_list(:invoice_item, 3, unit_price: 1275)
 
-      get :index, params: {unit_price: 1275, format: :json}
+      get :index, params: {unit_price: 12.75, format: :json}
       result_array = JSON.parse(response.body)
       expect(3).to eq(result_array.length)
 
