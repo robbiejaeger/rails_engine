@@ -23,6 +23,26 @@ RSpec.describe Api::V1::Merchants::ItemsController, type: :controller do
       expect(result["updated_at"]).to eq(nil)
     end
 
+    it 'returns a single items scoped to the given merchant out of many' do
+      merchant1 = create(:merchant)
+      merchant2 = create(:merchant)
+      item1 = create(:item, merchant_id: merchant1.id)
+      items = create_list(:item, 2, merchant_id: merchant2.id)
+
+
+      get :index, params: {merchant_id: merchant1.id, format: :json}
+      result_array = JSON.parse(response.body)
+      expect(1).to eq(result_array.length)
+      result = result_array[0]
+
+      expect(result["name"]).to eq(item1.name)
+      expect(result["description"]).to eq(item1.description)
+      expect(result["unit_price"]).to eq(item1.unit_price)
+      expect(result["merchant_id"]).to eq(merchant1.id)
+      expect(result["created_at"]).to eq(nil)
+      expect(result["updated_at"]).to eq(nil)
+    end
+
     it 'returns multiple items, but only those scoped to the given merchant' do
       merchant1 = create(:merchant)
       merchant2 = create(:merchant)
