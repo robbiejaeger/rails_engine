@@ -15,6 +15,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       expect(result["description"]).to eq(items[0].description)
       expect(result["unit_price"]).to eq(items[0].unit_price)
       expect(result["merchant_id"]).to eq(items[0].merchant_id)
+      expect(result["created_at"]).to eq(nil)
+      expect(result["updated_at"]).to eq(nil)
     end
 
     it 'finds an item by name' do
@@ -28,6 +30,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       expect(result["description"]).to eq(items[1].description)
       expect(result["unit_price"]).to eq(items[1].unit_price)
       expect(result["merchant_id"]).to eq(items[1].merchant_id)
+      expect(result["created_at"]).to eq(nil)
+      expect(result["updated_at"]).to eq(nil)
     end
 
     it 'finds an item by description' do
@@ -41,6 +45,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       expect(result["description"]).to eq(items[1].description)
       expect(result["unit_price"]).to eq(items[1].unit_price)
       expect(result["merchant_id"]).to eq(items[1].merchant_id)
+      expect(result["created_at"]).to eq(nil)
+      expect(result["updated_at"]).to eq(nil)
     end
 
     it 'finds an item by unit_price' do
@@ -55,6 +61,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       expect(result["description"]).to eq(uniq_price_item.description)
       expect(result["unit_price"]).to eq(uniq_price_item.unit_price)
       expect(result["merchant_id"]).to eq(uniq_price_item.merchant_id)
+      expect(result["created_at"]).to eq(nil)
+      expect(result["updated_at"]).to eq(nil)
     end
 
     it 'returns the first of several items with the same price' do
@@ -79,6 +87,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       expect(result["description"]).to eq(items[1].description)
       expect(result["unit_price"]).to eq(items[1].unit_price)
       expect(result["merchant_id"]).to eq(items[1].merchant_id)
+      expect(result["created_at"]).to eq(nil)
+      expect(result["updated_at"]).to eq(nil)
     end
   end
 end

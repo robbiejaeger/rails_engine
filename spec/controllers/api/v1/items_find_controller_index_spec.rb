@@ -18,6 +18,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       expect(result["unit_price"]).to eq(items[0].unit_price)
       expect(result["merchant_id"]).to eq(items[0].merchant_id)
       expect(result["id"]).not_to eq(items[1].id)
+      expect(result["created_at"]).to eq(nil)
+      expect(result["updated_at"]).to eq(nil)
     end
 
     it 'returns multiple items searching by name' do
@@ -33,6 +35,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
         expect(result["description"]).to eq(items[n+3].description)
         expect(result["unit_price"]).to eq(items[n+3].unit_price)
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
+        expect(result["created_at"]).to eq(nil)
+        expect(result["updated_at"]).to eq(nil)
       end
     end
 
@@ -49,6 +53,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
         expect(result["description"]).to eq(items[n+3].description)
         expect(result["unit_price"]).to eq(items[n+3].unit_price)
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
+        expect(result["created_at"]).to eq(nil)
+        expect(result["updated_at"]).to eq(nil)
       end
     end
 
@@ -65,6 +71,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
         expect(result["description"]).to eq(items[n+3].description)
         expect(result["unit_price"]).to eq(items[n+3].unit_price)
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
+        expect(result["created_at"]).to eq(nil)
+        expect(result["updated_at"]).to eq(nil)
       end
     end
 
@@ -82,6 +90,8 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
         expect(result["description"]).to eq(items[n+3].description)
         expect(result["unit_price"]).to eq(items[n+3].unit_price)
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
+        expect(result["created_at"]).to eq(nil)
+        expect(result["updated_at"]).to eq(nil)
       end
     end
   end
