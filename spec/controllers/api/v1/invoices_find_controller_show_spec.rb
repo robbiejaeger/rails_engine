@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::V1::Invoices::FindController, type: :controller do
+RSpec.describe Api::V1::Invoices::FindController, type: :controller do
   render_views
 
   describe "find a single invoice when multiple invoices exist" do
