@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Invoices::FindController, type: :controller do
+RSpec.describe Api::V1::Merchants::InvoicesController, type: :controller do
   render_views
 
   describe "find a collection of invoices scoped to a merchant" do
