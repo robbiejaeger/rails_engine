@@ -5,7 +5,7 @@ class ApplicationRecord < ActiveRecord::Base
     if ["name", "description", "first_name", "last_name", "status", "result"].include?(params.keys[0])
       where("LOWER(#{params.keys[0]}) LIKE ?", params.values[0].downcase)
     elsif ["unit_price"].include?(params.keys[0])
-      where(unit_price: (params.values[0].to_f*100).to_i)
+      where(unit_price: (eval(params.values[0]).to_d*100).to_i)
     else
       where(params)
     end
@@ -15,7 +15,7 @@ class ApplicationRecord < ActiveRecord::Base
     if ["name", "description", "first_name", "last_name", "status", "result"].include?(params.keys[0])
       find_by("LOWER(#{params.keys[0]}) LIKE ?", params.values[0].downcase)
     elsif ["unit_price"].include?(params.keys[0])
-      find_by(unit_price: (params.values[0].to_f*100).to_i)
+      find_by(unit_price: (eval(params.values[0]).to_d*100).to_i)
     else
       find_by(params)
     end

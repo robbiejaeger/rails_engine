@@ -15,7 +15,7 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       expect(result["id"]).to eq(items[0].id)
       expect(result["name"]).to eq(items[0].name)
       expect(result["description"]).to eq(items[0].description)
-      expect(result["unit_price"]).to eq(items[0].unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["merchant_id"]).to eq(items[0].merchant_id)
       expect(result["id"]).not_to eq(items[1].id)
       expect(result["created_at"]).to eq(nil)
@@ -33,7 +33,7 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       result_array.each_with_index do |result, n|
         expect(result["name"]).to eq(items[n+3].name)
         expect(result["description"]).to eq(items[n+3].description)
-        expect(result["unit_price"]).to eq(items[n+3].unit_price)
+        expect(result["unit_price"]).to eq("150.50")
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
         expect(result["created_at"]).to eq(nil)
         expect(result["updated_at"]).to eq(nil)
@@ -51,7 +51,7 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       result_array.each_with_index do |result, n|
         expect(result["name"]).to eq(items[n+3].name)
         expect(result["description"]).to eq(items[n+3].description)
-        expect(result["unit_price"]).to eq(items[n+3].unit_price)
+        expect(result["unit_price"]).to eq("150.50")
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
         expect(result["created_at"]).to eq(nil)
         expect(result["updated_at"]).to eq(nil)
@@ -62,14 +62,14 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       items = create_list(:item, 3)
       items = items + create_list(:item, 3, unit_price: 1475)
 
-      get :index, params: {unit_price: 14.75, format: :json}
+      get :index, params: {unit_price: "14.75", format: :json}
       result_array = JSON.parse(response.body)
       expect(3).to eq(result_array.length)
 
       result_array.each_with_index do |result, n|
         expect(result["name"]).to eq(items[n+3].name)
         expect(result["description"]).to eq(items[n+3].description)
-        expect(result["unit_price"]).to eq(items[n+3].unit_price)
+        expect(result["unit_price"]).to eq("14.75")
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
         expect(result["created_at"]).to eq(nil)
         expect(result["updated_at"]).to eq(nil)
@@ -88,7 +88,7 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       result_array.each_with_index do |result, n|
         expect(result["name"]).to eq(items[n+3].name)
         expect(result["description"]).to eq(items[n+3].description)
-        expect(result["unit_price"]).to eq(items[n+3].unit_price)
+        expect(result["unit_price"]).to eq("150.50")
         expect(result["merchant_id"]).to eq(items[n+3].merchant_id)
         expect(result["created_at"]).to eq(nil)
         expect(result["updated_at"]).to eq(nil)
