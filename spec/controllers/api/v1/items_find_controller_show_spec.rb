@@ -44,7 +44,7 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
       items = create_list(:item, 2)
       uniq_price_item = create(:item, unit_price: 1050)
 
-      get :show, params: {unit_price: uniq_price_item.unit_price, format: :json}
+      get :show, params: {unit_price: 10.50, format: :json}
       result = JSON.parse(response.body)
 
       expect(result["id"]).to eq(uniq_price_item.id)
@@ -56,7 +56,7 @@ RSpec.describe Api::V1::Items::FindController, type: :controller do
     it 'returns the first of several items with the same price' do
       items = create_list(:item, 3)
 
-      get :show, params: {unit_price: items[0].unit_price, format: :json}
+      get :show, params: {unit_price: 150.50, format: :json}
       result = JSON.parse(response.body)
 
       expect(result["id"]).to eq(items[0].id)
