@@ -54,7 +54,4 @@ FactoryGirl.define do
     credit_card_expiration_date "2017-03-27 14:54:09 UTC"
     result "success"
   end
-
-
-
 end
