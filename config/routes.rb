@@ -44,6 +44,8 @@ Rails.application.routes.draw do
         get 'items', to: 'merchants/items#index'
         get 'invoices', to: 'merchants/invoices#index'
         get 'revenue', to: 'merchants/revenues#show'
+        get 'customers_with_pending_invoices', to: 'merchants/customers_with_pending_invoices#index'
+        get 'favorite_customer', to: 'merchants/favorite_customer#index'
       end
 
       resources :transactions, only: [:index, :show] do
