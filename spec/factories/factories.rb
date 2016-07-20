@@ -45,7 +45,7 @@ FactoryGirl.define do
     item
     invoice
     quantity 5
-    unit_price
+    unit_price 15050
   end
 
   factory :transaction do
