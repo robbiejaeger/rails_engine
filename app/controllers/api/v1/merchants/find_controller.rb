@@ -1,11 +1,11 @@
 class Api::V1::Merchants::FindController < ApplicationController
 
   def index
-    @merchants = Merchant.where(merchant_params)
+    @merchants = Merchant.custom_where(merchant_params)
   end
 
   def show
-    @merchant = Merchant.find_by(merchant_params)
+    @merchant = Merchant.custom_find_by(merchant_params)
   end
 
   private

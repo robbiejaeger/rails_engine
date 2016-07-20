@@ -1,11 +1,11 @@
 class Api::V1::Customers::FindController < ApplicationController
 
   def index
-    @customers = Customer.where(customer_params)
+    @customers = Customer.custom_where(customer_params)
   end
 
   def show
-    @customer = Customer.find_by(customer_params)
+    @customer = Customer.custom_find_by(customer_params)
   end
 
   private

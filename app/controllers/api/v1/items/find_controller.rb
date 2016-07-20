@@ -1,11 +1,11 @@
 class Api::V1::Items::FindController < ApplicationController
 
   def show
-    @item = Item.case_insensitive_find_by(item_params)
+    @item = Item.custom_find_by(item_params)
   end
 
   def index
-    @items = Item.case_insensitive_where(item_params)
+    @items = Item.custom_where(item_params)
   end
 
   private
