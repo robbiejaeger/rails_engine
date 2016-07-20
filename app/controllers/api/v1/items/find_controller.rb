@@ -2,8 +2,6 @@ class Api::V1::Items::FindController < ApplicationController
 
   def show
     @item = Item.find_by(item_params)
-    render "show.json.jbuilder"
-    # byebug
   end
 
   def index
