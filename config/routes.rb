@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
 
       namespace :invoices do
-        get 'find', to: 'find#show'
+        get 'find', to: 'find#show', defaults: {format: :json}
         get 'find_all', to: 'find#index'
         get 'random', to: 'random#show'
       end
