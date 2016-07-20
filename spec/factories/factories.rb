@@ -48,7 +48,7 @@ FactoryGirl.define do
     unit_price
   end
 
-  factory :transactions do
+  factory :transaction do
     invoice
     credit_card_number "4587-1233-8756-4583"
     credit_card_expiration_date "2017-03-27 14:54:09 UTC"
