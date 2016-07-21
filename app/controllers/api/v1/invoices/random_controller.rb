@@ -1,6 +1,6 @@
 class Api::V1::Invoices::RandomController < ApplicationController
 
   def show
-    render json: Invoice.limit(1).order("RANDOM()")
+    @invoice = Invoice.limit(1).order("RANDOM()")[0]
   end
 end
