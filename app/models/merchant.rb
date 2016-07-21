@@ -47,7 +47,9 @@ class Merchant < ApplicationRecord
   end
 
   def favorite_customer_id
-    hash = customers.joins(:transactions).where(transactions: {result: 'success'}).group(:id).count
+    hash = customers.joins(:transactions)
+    .where(transactions: {result: 'success'})
+    .group(:id).count
     hash.max_by{ |customer, count| count }[0]
   end
 end
