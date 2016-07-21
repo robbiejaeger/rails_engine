@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
 
       namespace :merchants do
+        get 'most_revenue', to: 'most_revenue#index'
         get 'find', to: 'find#show'
         get 'find_all', to: 'find#index'
         get 'random', to: 'random#show'
