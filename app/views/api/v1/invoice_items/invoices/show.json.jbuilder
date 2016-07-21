@@ -1,1 +1,1 @@
-json.extract! @invoice, :id, :customer_id, :merchant_id, :status
+json.partial! 'api/v1/shared/invoice', invoice: @invoice
