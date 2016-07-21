@@ -115,7 +115,5 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
       expect(result["first_name"]).to eq(customer3.first_name)
       expect(result["last_name"]).to eq(customer3.last_name)
     end
-
-
   end
 end
