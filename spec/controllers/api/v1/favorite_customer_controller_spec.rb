@@ -48,12 +48,12 @@ RSpec.describe Api::V1::Merchants::FavoriteCustomerController, type: :controller
       customer2 = create(:customer)
       invoice4 = create(:invoice, customer_id: customer2.id, merchant_id: merchant.id)
       invoice5 = create(:invoice, customer_id: customer2.id, merchant_id: merchant.id)
-      transaction4 = create(:transaction, invoice_id: invoice1.id)
-      transaction5 = create(:transaction, invoice_id: invoice2.id)
+      transaction4 = create(:transaction, invoice_id: invoice4.id)
+      transaction5 = create(:transaction, invoice_id: invoice5.id)
       # 1 success transactions
       customer3 = create(:customer)
       invoice6 = create(:invoice, customer_id: customer3.id, merchant_id: merchant.id)
-      transaction6 = create(:transaction, invoice_id: invoice1.id)
+      transaction6 = create(:transaction, invoice_id: invoice6.id)
 
       get :show, params: {merchant_id: merchant.id, format: :json}
       result = JSON.parse(response.body)
