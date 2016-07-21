@@ -7,7 +7,8 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
     it 'returns single customer when only one exists' do
       merchant = create(:merchant)
       customer = create(:customer)
-      invoice = create(:invoice, customer_id: customer.id, merchant_id: merchant.id, status: 'pending')
+      invoice = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
+      transaction = create(:transaction, invoice_id: invoice.id, result: 'failed')
 
       get :index, params: {merchant_id: merchant.id, format: :json}
       result_array = JSON.parse(response.body)
@@ -25,7 +26,8 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
       customers = create_list(:customer, 3)
       merchant = create(:merchant)
       customer = create(:customer)
-      invoice = create(:invoice, customer_id: customer.id, merchant_id: merchant.id, status: 'pending')
+      invoice = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
+      transaction = create(:transaction, invoice_id: invoice.id, result: 'failed')
 
       get :index, params: {merchant_id: merchant.id, format: :json}
       result_array = JSON.parse(response.body)
@@ -44,6 +46,10 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
       customer2 = create(:customer)
       invoices = create_list(:invoice, 3, customer_id: customer1.id, merchant_id: merchant1.id, status: 'pending')
       invoices += create_list(:invoice, 3, customer_id: customer2.id, merchant_id: merchant2.id, status: 'pending')
+      invoices.each do |invoice|
+        create(:transaction, invoice_id: invoice.id, result: 'failed')
+      end
+
 
       get :index, params: {merchant_id: merchant1.id, format: :json}
       result_array = JSON.parse(response.body)
@@ -62,8 +68,12 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
       customer2 = create(:customer)
       customer3 = create(:customer)
 
-      invoices = create_list(:invoice, 3, customer_id: customer1.id, merchant_id: merchant1.id, status: 'pending')
-      invoices += create_list(:invoice, 3, customer_id: customer2.id, merchant_id: merchant1.id, status: 'pending')
+      invoices = create_list(:invoice, 3, customer_id: customer1.id, merchant_id: merchant1.id)
+      invoices += create_list(:invoice, 3, customer_id: customer2.id, merchant_id: merchant1.id)
+      invoices.each do |invoice|
+        create(:transaction, invoice_id: invoice.id, result: 'failed')
+      end
+      #invoices NOT pending
       invoices += create_list(:invoice, 3, customer_id: customer3.id, merchant_id: merchant1.id)
 
       get :index, params: {merchant_id: merchant1.id, format: :json}
@@ -89,8 +99,12 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
 
       invoices = create_list(:invoice, 3, customer_id: customer1.id, merchant_id: merchant1.id, status: 'pending')
       invoices += create_list(:invoice, 3, customer_id: customer2.id, merchant_id: merchant1.id, status: 'pending')
-      invoices += create_list(:invoice, 3, customer_id: customer3.id, merchant_id: merchant1.id)
       invoices += create_list(:invoice, 3, customer_id: customer3.id, merchant_id: merchant2.id, status: 'pending')
+      invoices.each do |invoice|
+        create(:transaction, invoice_id: invoice.id, result: 'failed')
+      end
+      # invoices NOT pending
+      invoices += create_list(:invoice, 3, customer_id: customer3.id, merchant_id: merchant1.id)
       invoices += create_list(:invoice, 3, customer_id: customer4.id, merchant_id: merchant2.id)
 
       get :index, params: {merchant_id: merchant1.id, format: :json}
