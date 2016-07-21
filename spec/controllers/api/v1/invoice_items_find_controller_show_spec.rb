@@ -14,7 +14,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
       expect(result["item_id"]).to eq(invoice_items[0].item_id)
       expect(result["invoice_id"]).to eq(invoice_items[0].invoice_id)
       expect(result["quantity"]).to eq(invoice_items[0].quantity)
-      expect(result["unit_price"]).to eq(invoice_items[0].unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
     end
@@ -29,7 +29,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
       expect(result["item_id"]).to eq(invoice_items[1].item_id)
       expect(result["invoice_id"]).to eq(invoice_items[1].invoice_id)
       expect(result["quantity"]).to eq(invoice_items[1].quantity)
-      expect(result["unit_price"]).to eq(invoice_items[1].unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
     end
@@ -44,7 +44,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
       expect(result["item_id"]).to eq(invoice_items[2].item_id)
       expect(result["invoice_id"]).to eq(invoice_items[2].invoice_id)
       expect(result["quantity"]).to eq(invoice_items[2].quantity)
-      expect(result["unit_price"]).to eq(invoice_items[2].unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
     end
@@ -60,7 +60,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
       expect(result["item_id"]).to eq(uniq_price_invoice_item.item_id)
       expect(result["invoice_id"]).to eq(uniq_price_invoice_item.invoice_id)
       expect(result["quantity"]).to eq(uniq_price_invoice_item.quantity)
-      expect(result["unit_price"]).to eq(1050)
+      expect(result["unit_price"]).to eq("10.50")
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
     end
@@ -87,7 +87,7 @@ RSpec.describe Api::V1::InvoiceItems::FindController, type: :controller do
       expect(result["item_id"]).to eq(uniq_quantity_invoice_item.item_id)
       expect(result["invoice_id"]).to eq(uniq_quantity_invoice_item.invoice_id)
       expect(result["quantity"]).to eq(15)
-      expect(result["unit_price"]).to eq(uniq_quantity_invoice_item.unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
     end

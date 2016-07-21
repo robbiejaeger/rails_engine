@@ -17,7 +17,7 @@ RSpec.describe Api::V1::Merchants::ItemsController, type: :controller do
       expect(result["id"]).to eq(item.id)
       expect(result["name"]).to eq(item.name)
       expect(result["description"]).to eq(item.description)
-      expect(result["unit_price"]).to eq(item.unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["merchant_id"]).to eq(item.merchant_id)
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
@@ -37,7 +37,7 @@ RSpec.describe Api::V1::Merchants::ItemsController, type: :controller do
 
       expect(result["name"]).to eq(item1.name)
       expect(result["description"]).to eq(item1.description)
-      expect(result["unit_price"]).to eq(item1.unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["merchant_id"]).to eq(merchant1.id)
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
@@ -57,7 +57,7 @@ RSpec.describe Api::V1::Merchants::ItemsController, type: :controller do
       result_array.each_with_index do |result, n|
         expect(result["name"]).to eq(items[n].name)
         expect(result["description"]).to eq(items[n].description)
-        expect(result["unit_price"]).to eq(items[n].unit_price)
+        expect(result["unit_price"]).to eq("150.50")
         expect(result["merchant_id"]).to eq(merchant1.id)
         expect(result["created_at"]).to eq(nil)
         expect(result["updated_at"]).to eq(nil)

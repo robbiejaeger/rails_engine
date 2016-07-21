@@ -1,3 +1,1 @@
-json.array!(@transactions) do |transaction|
-  json.extract! transaction, :id, :credit_card_number, :invoice_id, :result
-end
+json.partial! 'api/v1/shared/transaction', collection: @transactions, as: :transaction

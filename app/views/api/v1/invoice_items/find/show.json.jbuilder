@@ -1,1 +1,1 @@
-json.extract! @invoice_item, :id, :item_id, :invoice_id, :quantity, :unit_price
+json.partial! 'api/v1/shared/invoice_item', invoice_item: @invoice_item

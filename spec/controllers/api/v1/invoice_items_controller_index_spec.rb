@@ -16,7 +16,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(result["item_id"]).to eq(invoice_item.item_id)
       expect(result["invoice_id"]).to eq(invoice_item.invoice_id)
       expect(result["quantity"]).to eq(invoice_item.quantity)
-      expect(result["unit_price"]).to eq(invoice_item.unit_price)
+      expect(result["unit_price"]).to eq("150.50")
       expect(result["created_at"]).to eq(nil)
       expect(result["updated_at"]).to eq(nil)
     end
@@ -32,7 +32,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
         expect(result["item_id"]).to eq(invoice_items[n].item_id)
         expect(result["invoice_id"]).to eq(invoice_items[n].invoice_id)
         expect(result["quantity"]).to eq(invoice_items[n].quantity)
-        expect(result["unit_price"]).to eq(invoice_items[n].unit_price)
+        expect(result["unit_price"]).to eq("150.50")
         expect(result["created_at"]).to eq(nil)
         expect(result["updated_at"]).to eq(nil)
       end

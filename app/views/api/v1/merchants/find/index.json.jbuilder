@@ -1,3 +1,1 @@
-json.array!(@merchants) do |merchant|
-  json.extract! merchant, :id, :name
-end
+json.partial! 'api/v1/shared/merchant', collection: @merchants, as: :merchant
