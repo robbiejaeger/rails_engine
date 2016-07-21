@@ -23,6 +23,15 @@ class Merchant < ApplicationRecord
     (revenue_cents.to_f / 100).to_s
   end
 
+  def self.revenue_for_date_all_merchants(date)
+    revenue_cents = self.joins(invoices: [:transactions, :invoice_items])
+    .where(transactions: {result: "success"})
+    .where(invoices: {created_at: date})
+    .sum("invoice_items.unit_price * invoice_items.quantity")
+
+    (revenue_cents.to_f / 100).to_s
+  end
+
   def self.most_items_sold(quantity)
     self.joins(invoices: [:transactions, :invoice_items])
     .where(transactions: {result: "success"})
