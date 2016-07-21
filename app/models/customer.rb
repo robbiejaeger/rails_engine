@@ -8,4 +8,12 @@ class Customer < ApplicationRecord
     .where(invoices: {merchant_id: id}, transactions: {result: "failed"})
     .distinct.order(:id)
   end
+
+  def favorite_merchant
+    hash = merchants.joins(invoices: [:transactions])
+    .where(transactions: {result: "success"})
+    .group(:id).count
+
+    Merchant.find(hash.max_by{ |merchant, count| count }[0])
+  end
 end
