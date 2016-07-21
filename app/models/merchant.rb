@@ -5,7 +5,8 @@ class Merchant < ApplicationRecord
   def self.revenue(merchant_id)
     revenue_cents = self.joins(invoices: [:transactions, :invoice_items])
     .where(transactions: {result: "success"})
-    .where("merchants.id = ?", merchant_id).sum("invoice_items.unit_price * invoice_items.quantity")
+    .where("merchants.id = ?", merchant_id)
+    .sum("invoice_items.unit_price * invoice_items.quantity")
 
     (revenue_cents.to_f / 100).to_s
   end
@@ -14,7 +15,7 @@ class Merchant < ApplicationRecord
     revenue_cents = self.joins(invoices: [:transactions, :invoice_items])
     .where(transactions: {result: "success"})
     .where("merchants.id = ?", merchant_id)
-    .where(invoices: {created_at: eval(date)})
+    .where(invoices: {created_at: date})
     .sum("invoice_items.unit_price * invoice_items.quantity")
 
     (revenue_cents.to_f / 100).to_s
