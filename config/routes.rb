@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         get 'find_all', to: 'find#index'
         get 'random', to: 'random#show'
         get 'most_items', to: 'most_items#index'
+        get 'revenue', to: 'revenue_dates#show'
       end
 
       namespace :transactions do
