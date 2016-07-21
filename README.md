@@ -1,4 +1,4 @@
-# Rail Engine README
+# Rails Engine README
 
 ## About
 Rails engine is a business analytics API. It uses a postgres database to store business information like: customers, merchants, items, invoices, invoice items, and transactions. You can hit certain endpoints to retrieve data in JSON format. For example, a GET request to the endpoint
@@ -25,7 +25,7 @@ returns all of the merchants in the database using JSON:
 ]
 ```
 
-Also, the endpoints
+Also, the endpoint
 
 ```
 /api/v1/merchants/:id/revenue
