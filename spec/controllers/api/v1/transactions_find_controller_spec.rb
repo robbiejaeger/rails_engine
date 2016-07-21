@@ -34,7 +34,7 @@ RSpec.describe Api::V1::Transactions::FindController, type: :controller do
       transaction_1 = create(:transaction)
       transaction_2 = create(:transaction, credit_card_number: 2)
 
-      get :show, params: {transactions: transaction_1.credit_card_number, format: :json}
+      get :show, params: {credit_card_number: transaction_1.credit_card_number, format: :json}
       result = JSON.parse(response.body)
 
       expect(result["id"]).to eq(transaction_1.id)

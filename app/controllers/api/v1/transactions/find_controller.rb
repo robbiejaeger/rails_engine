@@ -1,16 +1,10 @@
 class Api::V1::Transactions::FindController < ApplicationController
 
   def index
-    @transactions = Transaction.custom_where(transaction_params)
+    @transactions = Transaction.custom_where(query_params)
   end
 
   def show
-    @transaction = Transaction.custom_find_by(transaction_params)
-  end
-
-  private
-
-  def transaction_params
-    params.permit(:id, :invoice_id, :credit_card_number, :credit_card_expiration_date, :result, :created_at, :updated_at)
+    @transaction = Transaction.custom_find_by(query_params)
   end
 end
