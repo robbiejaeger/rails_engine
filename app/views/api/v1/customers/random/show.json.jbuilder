@@ -1,1 +1,1 @@
-json.extract! @customer, :id, :first_name, :last_name
+json.partial! 'api/v1/shared/customer', customer: @customer

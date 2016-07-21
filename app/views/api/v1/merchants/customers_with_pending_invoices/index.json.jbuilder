@@ -1,3 +1,1 @@
-json.array!(@customers) do |customer|
-  json.extract! customer, :id, :first_name, :last_name
-end
+json.partial! 'api/v1/shared/customer', collection: @customers, as: :customer
