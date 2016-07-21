@@ -1,1 +1,1 @@
-json.extract! @merchant, :id, :name
+json.partial! 'api/v1/shared/merchant', merchant: @merchant
