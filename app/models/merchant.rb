@@ -1,6 +1,8 @@
 class Merchant < ApplicationRecord
   has_many :items
   has_many :invoices
+  has_many :customers, through: :invoices
+  has_many :transactions, through: :invoices
 
   def self.revenue(merchant_id)
     revenue_cents = self.joins(invoices: [:transactions, :invoice_items])
@@ -26,5 +28,11 @@ class Merchant < ApplicationRecord
     .where(transactions: {result: "success"})
     .group(:id).order("sum(invoice_items.quantity) DESC")
     .limit(quantity.to_i)
+  end
+
+  def favorite_customer_id
+    hash = customers.joins(:transactions).where(transactions: {result: 'success'}).group(:id).count
+    result = hash.max_by{ |customer, count| count }
+    return result[0]
   end
 end
