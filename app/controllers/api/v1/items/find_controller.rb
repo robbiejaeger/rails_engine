@@ -1,7 +1,6 @@
 class Api::V1::Items::FindController < ApplicationController
 
   def show
-    # byebug
     @item = Item.custom_find_by(item_params)
   end
 
