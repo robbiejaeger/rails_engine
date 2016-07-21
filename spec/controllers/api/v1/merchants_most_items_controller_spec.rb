@@ -33,13 +33,13 @@ RSpec.describe Api::V1::Merchants::MostItemsController, type: :controller do
       invoice_item1 = create(:invoice_item, item_id: item1.id,
                             invoice_id: invoice1.id, quantity: 3, unit_price: 15050)
       transaction1 = create(:transaction, invoice_id: invoice1.id)
-      # 2 success transactions
+      # 2 items
       item2 = create(:item, merchant_id: merchant2.id)
       invoice2 = create(:invoice, customer_id: customer.id, merchant_id: merchant2.id)
       invoice_item2 = create(:invoice_item, item_id: item2.id,
                             invoice_id: invoice2.id, quantity: 2, unit_price: 15050)
       transaction2 = create(:transaction, invoice_id: invoice2.id)
-      # 1 success transactions
+      # 1 items
       item3 = create(:item, merchant_id: merchant3.id)
       invoice3 = create(:invoice, customer_id: customer.id, merchant_id: merchant3.id)
       invoice_item3 = create(:invoice_item, item_id: item3.id,
