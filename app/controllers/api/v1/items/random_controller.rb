@@ -1,6 +1,6 @@
 class Api::V1::Items::RandomController < ApplicationController
 
   def show
-    render json: Item.limit(1).order("RANDOM()")
+    @item = Item.limit(1).order("RANDOM()")[0]
   end
 end
