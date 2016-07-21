@@ -11,7 +11,7 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
 
       get :index, params: {merchant_id: merchant.id, format: :json}
       result_array = JSON.parse(response.body)
-      expect(1).to eq(result_array.length)
+      expect(result_array.length).to eq(1)
       result = result_array[0]
 
       expect(result["id"]).to eq(customer.id)
@@ -29,7 +29,7 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
 
       get :index, params: {merchant_id: merchant.id, format: :json}
       result_array = JSON.parse(response.body)
-      expect(1).to eq(result_array.length)
+      expect(result_array.length).to eq(1)
       result = result_array[0]
 
       expect(result["id"]).to eq(customer.id)
@@ -47,7 +47,7 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
 
       get :index, params: {merchant_id: merchant1.id, format: :json}
       result_array = JSON.parse(response.body)
-      expect(1).to eq(result_array.length)
+      expect(result_array.length).to eq(1)
       result = result_array[0]
 
       expect(result["id"]).to eq(customer1.id)
@@ -68,7 +68,7 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
 
       get :index, params: {merchant_id: merchant1.id, format: :json}
       result_array = JSON.parse(response.body)
-      expect(2).to eq(result_array.length)
+      expect(result_array.length).to eq(2)
 
       expect(result_array[0]["id"]).to eq(customer1.id)
       expect(result_array[0]["first_name"]).to eq(customer1.first_name)
@@ -77,7 +77,6 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
       expect(result_array[1]["first_name"]).to eq(customer2.first_name)
       expect(result_array[1]["last_name"]).to eq(customer2.last_name)
     end
-
 
     it 'finds customers for different merchants' do
       merchant1 = create(:merchant)
@@ -108,7 +107,7 @@ RSpec.describe Api::V1::Merchants::CustomersWithPendingInvoicesController, type:
       #test for another merchant after the first
       get :index, params: {merchant_id: merchant2.id, format: :json}
       result_array = JSON.parse(response.body)
-      expect(1).to eq(result_array.length)
+      expect(result_array.length).to eq(1)
       result = result_array[0]
 
       expect(result["id"]).to eq(customer3.id)
